@@ -1,0 +1,26 @@
+# PREWARNING DO NOT SPAM THIS
+# Or it could get u banned from api on website
+# So this is another basic script but this time we are creating a hastebin paste via requests
+
+import requests # pip install requests / sudo pip install requests
+
+# First lets go to https://www.toptal.com/developers/hastebin/
+# Now go to inspect element then find network tab
+# We are going to write something random into paste and save it
+# Make sure network is recording for requests!
+
+# You will see a request pop up the url should be something like this
+# https://www.toptal.com/developers/hastebin/documents
+# We can also see it uses a post request.
+
+# If we scroll down we see a payload this can be json at times or data
+# We are now going to code this up
+
+resp = requests.post("https://www.toptal.com/developers/hastebin/documents", data=input("Content: ")) # so we send a post request since request we recieved was a post.
+# We put  data= For payload but sometimes it can be json=
+
+link = resp.json()["key"] # This recieves json request this can be seen if you press preview in network tab
+# So it goes through json layout and finds variable called key and tells us it
+
+link = "https://www.toptal.com/developers/hastebin/" + link # This is setting format of link so we know where our paste will be
+print(link) # Displays it to our screen
