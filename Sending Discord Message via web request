@@ -1,0 +1,17 @@
+import requests
+import time
+import random
+
+payload = {
+  "content": "Message",
+  "nonce": random.randint(100000000000000000,900000000000000000),
+  "tts": False
+}
+
+headers = {
+  "authorization": "token"
+}
+
+resp = requests.post("https://discord.com/api/v9/channels/userID/messages", data=payload, headers=headers)
+    
+print(resp.text)
